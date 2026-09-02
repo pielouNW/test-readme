@@ -1,260 +1,225 @@
-# NobodyWho React Native / Expo
+[![Discord](https://img.shields.io/discord/1308812521456799765?logo=discord&style=flat-square)](https://discord.gg/qhaMc2qCYB)
+[![Matrix](https://img.shields.io/badge/Matrix-000?logo=matrix&logoColor=fff)](https://matrix.to/#/#nobodywho:matrix.org)
+[![Mastodon](https://img.shields.io/badge/Mastodon-6364FF?logo=mastodon&logoColor=fff&style=flat-square)](https://mastodon.gamedev.place/@nobodywho)
+[![Pub.dev Version](https://img.shields.io/pub/v/nobodywho?include_prereleases&style=flat-square&label=pub.dev)](https://pub.dev/packages/nobodywho)
+[![PyPI Version](https://img.shields.io/pypi/v/nobodywho?style=flat-square&labelColor=%233775A9&color=%23FFD242)](https://pypi.org/project/nobodywho/)
+[![npm Version](https://img.shields.io/npm/v/react-native-nobodywho?style=flat-square&logo=npm&label=npm)](https://www.npmjs.com/package/react-native-nobodywho)
+[![Godot Engine](https://img.shields.io/badge/Godot-%23FFFFFF.svg?logo=godot-engine&style=flat-square)](https://godotengine.org/asset-library/asset/2886)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=flat-square)](CODE_OF_CONDUCT.md) 
+[![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
 
-NobodyWho is a React Native / Expo library for running large language models locally and offline on iOS and Android.
+<p align="center">
+  <img src="assets/logo-nobodywho.png" alt="NobodyWho Logo" width="150"/>
+</p>
 
-Free to use in commercial projects under the EUPL-1.2 license — no API key required. Supports text, vision, hearing, speech-to-text, text-to-speech, voice activity detection, embeddings, RAG & function calling.
+<h1 align="center">NobodyWho</h1>
 
-- [Documentation](https://docs.nobodywho.ooo) — React Native & other frameworks documentation
-- [RN starter example app](https://github.com/nobodywho-ooo/react-native-starter-example) / [Expo starter example app](https://github.com/nobodywho-ooo/expo-starter-example) — Test this library in 5 minutes
-- [Discord](https://discord.gg/qhaMc2qCYB) — Get help, share ideas, and connect with other developers
-- [GitHub Issues](https://github.com/nobodywho-ooo/nobodywho/issues) — Report bugs
-- [GitHub Discussions](https://github.com/nobodywho-ooo/nobodywho/discussions) — Ask questions and request features
+<p align="center">
+  <strong> On-device AI for any device.</strong><br/>
+  NobodyWho is an inference engine that lets you run LLMs locally and efficiently.
+</p>
 
-## How do I get started?
+---
 
-First, install `react-native-nobodywho`.
-```bash
-# React Native
-npm install react-native-nobodywho
-# Expo
-npx expo install react-native-nobodywho
+## ✨ Features
+
+* **Run locally, offline** — no API keys needed or hidden fees
+* **Run any chat LLM** — Gemma, Qwen, Mistral and more
+* **Fast, type-safe tool calling** — automatically generates structured grammars from your function signatures, no schema writing needed
+* **Multimodal input** — provide image and audio information to your LLM
+* **Text-to-speech** — synthesize local WAV audio with Kokoro, Pocket TTS and Supertonic backends
+* **Speech-to-text** — Transcribe audio into text with Whisper
+* **Model downloading** — load models directly from [Hugging Face](https://huggingface.co/models?library=gguf&sort=trending) or any URL
+
+## ⚡️ Under the Hood
+
+* Conversation-aware preemptive context shifting — retain full conversation memory without any message length limits
+* GPU-accelerated inference via Vulkan or Metal — runs fast on any OS
+* Compatible with thousands of pre-trained LLMs — use any LLM in the GGUF format
+* Powered by the wonderful [llama.cpp](https://github.com/ggml-org/llama.cpp)
+
+---
+
+## Platforms
+
+We support Kotlin, Swift, Python, Flutter, React Native, Expo and Godot.
+
+| Platform | Installation | Documentation |
+|----------|-------------|---------------|
+| **Kotlin** | [Maven Central](#kotlin) | [docs.nobodywho.ooo/kotlin](https://docs.nobodywho.ooo/kotlin/) |
+| **Swift** | [SPM](#swift) | [docs.nobodywho.ooo/swift](https://docs.nobodywho.ooo/swift/) |
+| **React Native / Expo** | [npm](#react-native--expo) | [docs.nobodywho.ooo/react-native](https://docs.nobodywho.ooo/react-native/) |
+| **Flutter** | [pub.dev](#flutter) | [docs.nobodywho.ooo/flutter](https://docs.nobodywho.ooo/flutter/) |
+| **Python** | [pypi](#python) | [docs.nobodywho.ooo/python](https://docs.nobodywho.ooo/python/) |
+| **Godot** | [AssetLib](#godot) | [docs.nobodywho.ooo/godot](https://docs.nobodywho.ooo/godot/) |
+
+## Quick Start
+
+### Kotlin
+
+```kotlin
+import ai.nobodywho.Chat
+
+val chat = Chat.fromPath(
+    modelPath = "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf"
+)
+
+val response = chat.ask("What is the capital of Denmark?").completed()
+println(response) // The capital of Denmark is Copenhagen.
 ```
 
-### React Native
+Add to your `build.gradle.kts`:
 
-No additional initialization step is required — the native module is loaded automatically when you first import from the package.
+```kotlin
+// Android
+implementation("ai.nobodywho:nobodywho-android:2.0.0")
 
-### Expo
-
-NobodyWho ships native code, so it does **not** run in [Expo Go](https://docs.expo.dev/get-started/set-up-your-environment/). You need a [development build](https://docs.expo.dev/develop/development-builds/introduction/).
-
-#### • Continuous Native Generation (CNG) projects
-
-In a managed project, `ios/` and `android/` are not committed. For the **first build**, run the command for the platform you are targeting (`run:ios` and `run:android` are alternatives — pick your target). It runs prebuild automatically since the native folders don't exist yet, installs pods, and builds NobodyWho in:
-
-```bash
-npx expo run:ios
-# or
-npx expo run:android
+// Desktop JVM (Linux, macOS, Windows)
+implementation("ai.nobodywho:nobodywho:2.0.0")
 ```
 
-After you **upgrade** NobodyWho (or any other native dependency), the native folders already exist, so `run:*` would build against stale native code. Regenerate them from scratch, then rebuild:
+[Kotlin documentation](https://docs.nobodywho.ooo/kotlin/)
 
-```bash
-npx expo prebuild --clean   # regenerate ios/ and android/ from scratch
-npx expo run:ios            # then rebuild (or run:android)
+---
+
+### Swift
+
+```swift
+import NobodyWho
+
+let chat = try await Chat.fromPath(
+    modelPath: "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf"
+)
+
+let response = try await chat.ask("What is the capital of Denmark?").completed()
+print(response) // The capital of Denmark is Copenhagen.
 ```
 
-#### • Bare projects
+Add via Swift Package Manager:
 
-Here `ios/` and `android/` are committed. Autolinking registers the module on your next native build — just rebuild with `expo run:*` (or your existing native build). Do not run `prebuild --clean` here unless you intend to regenerate the native folders, since it overwrites manual native edits.
-
-You can also build with [EAS Build](https://docs.expo.dev/build/introduction/) instead of building locally. No config plugin is required.
-
-## Supported Model Format
-
-This library uses the **GGUF format** — a binary format optimized for fast loading and efficient LLM inference. A wide selection of GGUF models is available on [Hugging Face](https://huggingface.co/models).
-
-**Compatibility notes:**
-- Most GGUF models will work, but some may fail due to formatting issues.
-- For mobile devices, models under 1 GB tend to run smoothly. As a general rule, the device should have at least twice the available RAM as the model file size. Note that available RAM differs from total RAM — iOS typically reserves around 1–2 GB for the kernel and system processes, while Android overhead varies by manufacturer: roughly 2 GB on stock Android (e.g. Pixel devices), and between 2–4 GB on Samsung, Xiaomi, and Oppo devices due to additional services.
-
-**Minimum recommended specs:**
-
-- iOS: iPhone 11 or newer with at least 4 GB of RAM.
-- Android: Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
-
-## Model Loading
-
-Models can be loaded from a local file path or downloaded automatically from HuggingFace:
-
-```typescript
-import { Model } from "react-native-nobodywho";
-
-// Download from HuggingFace (cached automatically)
-const model = await Model.load({
-  modelPath: "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf",
-});
-
-// Or load from a local file
-const model = await Model.load({ modelPath: "/path/to/model.gguf" });
+```
+https://github.com/nobodywho-ooo/nobodywho-swift.git
 ```
 
-Downloaded models are cached on disk and reused on subsequent loads.
+[Swift documentation](https://docs.nobodywho.ooo/swift/) - [GitHub](https://github.com/nobodywho-ooo/nobodywho-swift)
 
-## Chat
+---
+
+### React Native / Expo
 
 ```typescript
 import { Chat } from "react-native-nobodywho";
 
 const chat = await Chat.fromPath({
   modelPath: "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf",
-  systemPrompt: "You are a helpful assistant.",
 });
 
-// Stream tokens
-for await (const token of chat.ask("Is water wet?")) {
-  console.log(token);
+const msg = await chat.ask("What is the capital of Denmark?").completed();
+console.log(msg); // The capital of Denmark is Copenhagen.
+```
+
+Install via npm:
+
+```bash
+# React Native
+npm install react-native-nobodywho
+
+# Expo
+npx expo install react-native-nobodywho
+```
+
+[RN / Expo documentation](https://docs.nobodywho.ooo/react-native/) - [npm](https://www.npmjs.com/package/react-native-nobodywho) - [RN starter example app](https://github.com/nobodywho-ooo/react-native-starter-example) - [Expo starter example app](https://github.com/nobodywho-ooo/expo-starter-example)
+
+---
+
+### Flutter
+
+```dart
+import 'package:nobodywho/nobodywho.dart' as nobodywho;
+
+void main() async {
+  await nobodywho.NobodyWho.init();
+
+  final chat = await nobodywho.Chat.fromPath(
+    modelPath: 'huggingface:NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf',
+  );
+
+  final msg = await chat.ask('What is the capital of Denmark?').completed();
+  print(msg); // The capital of Denmark is Copenhagen.
 }
-
-// Or get the full response
-const response = await chat.ask("Is water wet?").completed();
 ```
 
-See the [Chat documentation](https://docs.nobodywho.ooo/react-native/chat/) for details.
+Install via pub.dev:
 
-## Tool Calling
-
-Give your LLM the ability to interact with the outside world by defining tools:
-
-```typescript
-import { Chat, Tool } from "react-native-nobodywho";
-
-function getWeatherForCity(city: string): string {
-  return JSON.stringify({ temp: 22, condition: "sunny" });
-}
-
-const getWeather = new Tool({
-  name: "get_weather",
-  description: "Get the current weather for a city",
-  parameters: [
-    { name: "city", type: "string", description: "The city name" },
-  ],
-  call: getWeatherForCity,
-});
-
-const chat = await Chat.fromPath({
-  modelPath: "/path/to/model.gguf",
-  tools: [getWeather],
-});
-
-const response = await chat.ask("What's the weather in Paris?").completed();
+```
+flutter pub add nobodywho
 ```
 
-See the [Tool Calling documentation](https://docs.nobodywho.ooo/react-native/tool-calling/) for more.
+[Flutter documentation](https://docs.nobodywho.ooo/flutter/) - [pub.dev](https://pub.dev/packages/nobodywho) - [starter example app](https://github.com/nobodywho-ooo/flutter-starter-example)
 
 ---
 
-## Sampling
+### Python
 
-The model outputs a probability distribution over possible tokens. A sampler determines how the next token is selected from that distribution. You can configure sampling to improve output quality or constrain outputs to a specific format (e.g. JSON):
+```python
+from nobodywho import Chat
 
-```typescript
-import { Chat, SamplerPresets } from "react-native-nobodywho";
+chat = Chat("huggingface:NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf")
 
-const chat = await Chat.fromPath({
-  modelPath: "/path/to/model.gguf",
-  sampler: SamplerPresets.temperature(0.2), // Lower = more deterministic
-});
+response = chat.ask("What is the capital of Denmark?").completed()
+print(response) // The capital of Denmark is Copenhagen.
 ```
 
-See the [Sampling documentation](https://docs.nobodywho.ooo/react-native/sampling/) for more.
+Install via pip:
+
+```sh
+pip install nobodywho
+```
+
+[Python documentation](https://docs.nobodywho.ooo/python/) - [pypi](https://pypi.org/project/nobodywho/)
 
 ---
 
-## Vision & Hearing
+## Godot
 
-Provide image and audio information to your LLM.
+You can install it from inside the Godot editor: In Godot 4.5+, go to AssetLib and search for "NobodyWho".
 
-To enable this, you need two model files:
+...or you can grab a specific version from our [github releases page.](https://github.com/nobodywho-ooo/nobodywho/releases) You can install these zip files by going to the "AssetLib" tab in Godot and selecting "Import".
 
-- A multimodal LLM, so the LLM can consume image-tokens or/and audio-tokens
-- A matching projection model, which converts images to image-tokens or/and audio to audio-tokens (usually has `mmproj` in the name)
+Make sure that the ignore asset root option is set in the import dialogue.
 
-Pass the projection model when loading your model, then use `Prompt` to compose prompts that mix text and images:
-
-```typescript
-import { Chat, Prompt } from "react-native-nobodywho";
-
-const chat = await Chat.fromPath({
-  modelPath: "/path/to/vision-model.gguf",
-  projectionModelPath: "/path/to/mmproj.gguf",
-});
-
-const response = await chat
-  .ask(
-    new Prompt([
-      Prompt.Text("Tell me what you see in the image and what you hear in the audio."),
-      Prompt.Image("/path/to/dog.png"),
-      Prompt.Audio("/path/to/sound.mp3"),
-    ]),
-  )
-  .completed();
-```
-
-You can pass multiple images/audio files and interleave text between them. If the model performs poorly, try reordering the text, audio and image parts — this can make a noticeable difference. If images consume too much context, increase `contextSize` or preprocess images with compression.
-
-See the [Vision & Hearing documentation](https://docs.nobodywho.ooo/react-native/vision/) for model recommendations and advanced tips.
+For further instructions on how to setup NobodyWho in Godot please refer to our [docs](https://docs.nobodywho.ooo/godot/install/).
 
 ---
 
-## Speech to Text
+## Documentation
 
-Transcribe spoken audio into text using Whisper models in ONNX format:
+[The documentation](https://docs.nobodywho.ooo) has everything you might want to know: https://docs.nobodywho.ooo/
 
-```typescript
-import { SpeechToText } from "react-native-nobodywho";
+## How to Help 
 
-const stt = await SpeechToText.load({
-  source: "hf://onnx-community/whisper-base",
-});
+* ⭐ Star the repo and spread the word about NobodyWho!
+* Join our [Discord](https://discord.gg/qhaMc2qCYB) or [Matrix](https://matrix.to/#/#nobodywho:matrix.org) communities
+* Found a bug? Open an issue!
+* Submit your own PR - contributions welcome
+* Help improve docs, write tutorials and demos
 
-const text = await stt.transcribeFile("recording.mp3").completed();
-console.log(text);
-```
 
-You can also transcribe raw PCM buffers with `transcribePcm`, and stream the transcription token by token.
+### Can I export to HTML5 or iOS?
 
-See the [Speech to Text documentation](https://docs.nobodywho.ooo/react-native/speech-to-text/) for more.
+Desktop (Linux, macOS, Windows) is supported across all bindings. Android is supported on Kotlin, Godot, Flutter and React Native. iOS is supported on Swift, Flutter and React Native. visionOS and watchOS are supported via the Swift package.
 
----
+Web exports will be a bit trickier to get right. See issue [#111](https://github.com/nobodywho-ooo/nobodywho/issues/111).
 
-## Text to Speech
 
-Generate natural-sounding speech from text, ready to save as a WAV file or play back in your app:
+## Licensing
 
-```typescript
-import { TextToSpeech } from "react-native-nobodywho";
+There has been some confusion about the licensing terms of NobodyWho. To clarify:
 
-const tts = await TextToSpeech.load({
-  source: "hf://NobodyWho/Kokoro-82M", // Hugging Face repo or local folder.
-  voice: "bf_emma", // Voice to use from the model.
-  language: "en-gb", // Language code for the input text.
-});
+> Linking two programs or linking an existing software with your own work does not – at least under European law – produce a derivative or extend the coverage of the linked software licence to your own work. [[1]](https://interoperable-europe.ec.europa.eu/collection/eupl/licence-compatibility-permissivity-reciprocity-and-interoperability)
 
-const wav = await tts.synthesize("Hello from NobodyWho!");
-// wav is a Uint8Array containing WAV bytes.
-```
+You are allowed to use this plugin in proprietary and commercial projects, free of charge.
 
-NobodyWho supports the Kokoro, Pocket TTS, and Supertonic speech synthesis architectures.
+If you distribute modified versions of the code *in this repo*, you must open source those changes.
 
-See the [Text to Speech documentation](https://docs.nobodywho.ooo/react-native/text-to-speech/) for more.
-
----
-
-## Voice Activity Detection
-
-Detect speech automatically in an audio stream, so you know when to stop listening to the microphone and start transcribing:
-
-```typescript
-import {
-  VoiceActivityDetection,
-  VoiceActivityDetectionEvent,
-} from "react-native-nobodywho";
-
-const vad = await VoiceActivityDetection.load({
-  sampleRate: 16000,
-  source: "hf://onnx-community/silero-vad",
-});
-
-while (true) {
-  const chunk = readMic(); // however you're reading from the microphone
-  if (vad.push(chunk) === VoiceActivityDetectionEvent.SpeechEnded) break;
-}
-
-const speech = vad.finish(); // buffered speech, ready to pass to SpeechToText
-```
-
-You can also segment speech out of an existing recording with `segment()`.
-
-See the [Voice Activity Detection documentation](https://docs.nobodywho.ooo/react-native/voice-activity-detection/) for more.
+Feel free to make proprietary projects using NobodyWho, but don't make a proprietary fork of NobodyWho.
