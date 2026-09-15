@@ -12,11 +12,11 @@
 
 # NobodyWho
 
-**On-device AI for mobile & desktop: text, vision, embeddings, RAG, tool calling, STT, TTS & VAD. Run GGUF models with Metal/Vulkan acceleration. Free for commercial use.**
+**On-device AI for mobile, desktop and smartwatch: text, vision, embeddings, RAG, tool calling, STT, TTS & VAD. Run GGUF models with Metal/Vulkan acceleration. Free for commercial use.**
 
-It all runs on the device. No API key, no network, no per-token cost, and nothing leaves the machine.
+It all runs on the device. No API key, works offline, no per-token cost, and no data leaves the machine.
 
-Shipping today in [Chat](https://example.com/nobodywho-chat), [Eyes](https://example.com/nobodywho-eyes) and [Wrist](https://example.com/nobodywho-wrist).
+You can test our inference engine with our [Mobile](https://example.com/nobodywho-chat), [Vision Pro](https://example.com/nobodywho-eyes) and [Apple Watch](https://example.com/nobodywho-wrist) apps.
 
 ---
 
