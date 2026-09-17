@@ -1,3 +1,4 @@
+<a id="top"></a>
 [![Stars](https://img.shields.io/github/stars/nobodywho-ooo/nobodywho?style=flat-square&logo=github&label=Star)](https://github.com/nobodywho-ooo/nobodywho/stargazers)
 [![Licence](https://img.shields.io/badge/licence-EUPL--1.2-blue?style=flat-square)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
@@ -6,17 +7,34 @@
 [![npm Version](https://img.shields.io/npm/v/react-native-nobodywho?style=flat-square&logo=npm&label=npm)](https://www.npmjs.com/package/react-native-nobodywho)
 [![Maven Central](https://img.shields.io/maven-central/v/ai.nobodywho/nobodywho?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/artifact/ai.nobodywho/nobodywho)
 
+<h1 align="center">NobodyWho</h1>
+
 <p align="center">
-  <img src="assets/logo-nobodywho.png" alt="NobodyWho Logo" width="150"/>
+  <strong> On-device AI for any device.</strong><br/>
+  NobodyWho is an inference engine that lets you run LLMs locally and efficiently.
 </p>
 
-# NobodyWho
+---
 
-**On-device AI for mobile, desktop and smartwatch: text, vision, embeddings, RAG, tool calling, STT, TTS & VAD. Run GGUF models with Metal/Vulkan acceleration. Free for commercial use.**
+## ✨ Features
 
-It all runs on the device. No API key, works offline, no per-token cost, and no data leaves the machine.
+* **Run locally, offline** — no API keys needed or hidden fees
+* **Run any chat LLM** — Gemma, Qwen, Mistral and more
+* **Fast, type-safe tool calling** — automatically generates structured grammars from your function signatures, no schema writing needed
+* **Multimodal input** — provide image and audio information to your LLM
+* **Text-to-speech** — synthesize local WAV audio with Kokoro, Pocket TTS and Supertonic backends
+* **Speech-to-text** — transcribe audio into text with Whisper
+* **Voice Activity Detection** — know when to stop listening and start transcribing with Silero
+* **Model downloading** — load models directly from [Hugging Face](https://huggingface.co/models?library=gguf&sort=trending) or any URL
 
-You can test our inference engine with our [Mobile](https://example.com/nobodywho-chat), [Vision Pro](https://example.com/nobodywho-eyes) and [Apple Watch](https://example.com/nobodywho-wrist) apps.
+## ⚡️ Under the Hood
+
+* GPU-accelerated inference via Vulkan or Metal — runs fast on any OS
+* Conversation-aware preemptive context shifting — retain full conversation memory without any message length limits
+* Compatible with thousands of pre-trained LLMs — use any LLM in the GGUF format
+* Powered by the wonderful [llama.cpp](https://github.com/ggml-org/llama.cpp)
+
+You can test our inference engine with on [iOS](https://apps.apple.com/us/app/nobodywho-chat/id6781001350), [Android](https://play.google.com/store/apps/details?id=ai.nobodywho.mobile), [Vision Pro](https://example.com/nobodywho-eyes) and [Apple Watch](https://example.com/nobodywho-wrist).
 
 ---
 
@@ -32,14 +50,13 @@ uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobo
 
 It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.
 Set your client's base URL to `http://127.0.0.1:8888/v1` and the model to `qwen`.
-The server is experimental — see the [server docs](https://docs.nobodywho.ooo/server/).
 
 | | |
 |---|---|
 | <img src="assets/screenshot-server.png" alt="An existing OpenAI client answering from a local model" width="420"/> | <img src="assets/screenshot-app.png" alt="NobodyWho running offline on a phone" width="420"/> |
 | An OpenAI client, pointed at localhost, answering offline. | The same model running on a phone in flight mode. |
 
-⭐ **If this is the thing you were looking for, star the repo** — it is the single biggest help.
+⭐ Useful to you? [Star the repo]](#top), it's the easiest way to say thanks.
 
 ---
 
@@ -64,7 +81,7 @@ Desktop means Linux, macOS and Windows throughout. Two gaps worth knowing before
 Inference uses Vulkan or Metal where available and CPU where not. The real constraint is memory:
 
 - **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM, which
-  is well below total RAM. iOS reserves 1–2 GB, Android 2–4 GB depending on vendor.
+  is well below total RAM. iOS reserves around 2 GB, Android 2 to 4 GB depending on vendor.
 - **iOS** — iPhone 11 or newer, 4 GB RAM or more.
 - **Android** — Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
 - Models under 1 GB run smoothly on mobile.
