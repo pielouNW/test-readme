@@ -269,7 +269,7 @@ Working with a coding agent? Point it at [llms.txt](https://docs.nobodywho.ooo/l
 
 ## Community
 
-- [Discord](https://discord.gg/qhaMc2qCYB) — ask us anything
+- [Discord](https://discord.gg/qhaMc2qCYB) & [Matrix](https://matrix.to/#/#nobodywho:matrix.org) — ask us anything
 - [Issues](https://github.com/nobodywho-ooo/nobodywho/issues) and [Discussions](https://github.com/nobodywho-ooo/nobodywho/discussions) — bugs and feature requests
 - [CONTRIBUTING.md](CONTRIBUTING.md) — set up the repo and send a PR
 - [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md) · [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
