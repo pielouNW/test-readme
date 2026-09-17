@@ -90,7 +90,7 @@ Inference uses Vulkan or Metal where available and CPU where not. The real const
   it skips the GPU and stays on CPU.
 - **iOS** — iPhone 11 or newer, 4 GB RAM or more.
 - **Android** — Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
-- Models under 1 GB run smoothly on mobile.
+- Models under 1 GB run smoothly on any mobile.
 
 ## Models
 
