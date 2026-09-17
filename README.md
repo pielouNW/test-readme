@@ -56,7 +56,7 @@ Set your client's base URL to `http://127.0.0.1:8888/v1` and the model to `qwen`
 | <img src="assets/screenshot-server.png" alt="An existing OpenAI client answering from a local model" width="420"/> | <img src="assets/screenshot-app.png" alt="NobodyWho running offline on a phone" width="420"/> |
 | An OpenAI client, pointed at localhost, answering offline. | The same model running on a phone in flight mode. |
 
-⭐ Useful to you? [Star the repo]](#top), it's the easiest way to say thanks.
+⭐ Useful to you? [Star the repo](#top), it's the easiest way to say thanks.
 
 ---
 
