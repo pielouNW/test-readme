@@ -218,10 +218,9 @@ pip install nobodywho
 ```python
 from nobodywho import Chat
 
-chat = Chat("hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf")
-
-response = chat.ask("What is the capital of Denmark?").completed()
-print(response)  # The capital of Denmark is Copenhagen.
+chat = Chat('hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf')
+response = chat.ask('Is water wet?')
+print(response.completed()) // The capital of Denmark is Copenhagen.
 ```
 
 [Python documentation](https://docs.nobodywho.ooo/python/) · [PyPI](https://pypi.org/project/nobodywho/)
@@ -244,18 +243,6 @@ You can also grab a specific version from the [releases page](https://github.com
 </details>
 
 ---
-
-## What it does
-
-- **Chat** — streaming or blocking, sync and async, on every binding.
-- **Tool calling** — pass an ordinary function; the grammar is derived from its signature, so the model cannot emit a malformed call.
-- **Structured output** — constrain generation to a JSON schema, a regex, or a grammar.
-- **Vision and hearing** — images and audio in the prompt, with a multimodal model.
-- **Embeddings and reranking** — an encoder for vectors, a cross-encoder for ranking: most of what RAG needs.
-- **Speech to text** — Whisper transcription from files or raw PCM, streamable.
-- **Text to speech** — local WAV synthesis via Kokoro, Pocket TTS or Supertonic.
-- **Voice activity detection** — know when to stop listening and start transcribing.
-- **Infinite conversations** — preemptive context shifting, so long chats don't fall over at the context limit.
 
 ## Under the hood
 
