@@ -1,4 +1,3 @@
-<a id="top"></a>
 [![Stars](https://img.shields.io/github/stars/nobodywho-ooo/nobodywho?style=flat-square&logo=github&label=Star)](https://github.com/nobodywho-ooo/nobodywho/stargazers)
 [![Licence](https://img.shields.io/badge/licence-EUPL--1.2-blue?style=flat-square)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
@@ -20,7 +19,7 @@
 
 * **Run locally, offline** — no API keys needed or hidden fees
 * **Run any chat LLM** — Gemma, Qwen, Mistral and more
-* **Fast, type-safe tool calling** — automatically generates structured grammars from your function signatures, no schema writing needed
+* **Fast, type-safe tool calling** — automatically generates structured grammars from your function signatures
 * **Multimodal input** — provide image and audio information to your LLM
 * **Text-to-speech** — synthesize local WAV audio with Kokoro, Pocket TTS and Supertonic backends
 * **Speech-to-text** — transcribe audio into text with Whisper
@@ -56,7 +55,7 @@ Set your client's base URL to `http://127.0.0.1:8888/v1` and the model to `qwen`
 | <img src="assets/screenshot-server.png" alt="An existing OpenAI client answering from a local model" width="420"/> | <img src="assets/screenshot-app.png" alt="NobodyWho running offline on a phone" width="420"/> |
 | An OpenAI client, pointed at localhost, answering offline. | The same model running on a phone in flight mode. |
 
-⭐ Useful to you? [Star the repo](#top), it's the easiest way to say thanks.
+⭐ Useful to you? Star the repo, it's the easiest way to say thanks.
 
 ---
 
@@ -262,7 +261,7 @@ feature lands everywhere at once, and why behaviour doesn't drift between platfo
 
 ## Documentation
 
-[docs.nobodywho.ooo](https://docs.nobodywho.ooo) has a guide per binding, per feature.
+The documentation has everything you might want to know: https://docs.nobodywho.ooo/
 
 Working with a coding agent? Point it at [llms.txt](https://docs.nobodywho.ooo/llms.txt) or
 [llms-full.txt](https://docs.nobodywho.ooo/llms-full.txt), or drop our
@@ -270,8 +269,7 @@ Working with a coding agent? Point it at [llms.txt](https://docs.nobodywho.ooo/l
 
 ## Community
 
-- [Discord](https://discord.gg/qhaMc2qCYB) and [Matrix](https://matrix.to/#/#nobodywho:matrix.org) — ask us anything
-- [Mastodon](https://mastodon.gamedev.place/@nobodywho) — release notes and demos
+- [Discord](https://discord.gg/qhaMc2qCYB) — ask us anything
 - [Issues](https://github.com/nobodywho-ooo/nobodywho/issues) and [Discussions](https://github.com/nobodywho-ooo/nobodywho/discussions) — bugs and feature requests
 - [CONTRIBUTING.md](CONTRIBUTING.md) — set up the repo and send a PR
 - [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md) · [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
