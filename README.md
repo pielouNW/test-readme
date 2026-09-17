@@ -43,17 +43,17 @@ NobodyWho ships an OpenAI-compatible server, so you can point any client you alr
 have at a local model without writing a line of code:
 
 ```bash
-uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' \
-  nobodywho-server --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf --name qwen
+uvx \
+  --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' \
+  nobodywho-server \
+  --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf \
+  --name qwen
 ```
 
 It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.
 Set your client's base URL to `http://127.0.0.1:8888/v1` and the model to `qwen`.
 
-| | |
-|---|---|
-| <img src="assets/screenshot-server.png" alt="An existing OpenAI client answering from a local model" width="420"/> | <img src="assets/screenshot-app.png" alt="NobodyWho running offline on a phone" width="420"/> |
-| An OpenAI client, pointed at localhost, answering offline. | The same model running on a phone in flight mode. |
+The server is experimental, see the [server docs](https://docs.nobodywho.ooo/docs/server) for more info.
 
 ⭐ Useful to you? Star the repo, it's the easiest way to say thanks.
 
