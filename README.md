@@ -82,24 +82,27 @@ Inference uses Vulkan or Metal where available and CPU where not. The real const
 
 - **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM, which
   is well below total RAM. iOS reserves around 2 GB, Android 2 to 4 GB depending on vendor.
+- **Desktop** — any 64-bit Linux, macOS or Windows machine. 8 GB RAM is a comfortable floor for
+  models up to ~2 GB; 16 GB or more above that. macOS accelerates through Metal out of the box,
+  on Apple Silicon and Intel. Linux and Windows need a GPU driver with Vulkan support and
+  fall back to CPU without one.
+- **Discrete GPUs** — NobodyWho offloads as many layers as fit in free VRAM and runs the rest on
+  the CPU, so a model larger than your VRAM still works, just slower. If barely any of it fits,
+  it skips the GPU and stays on CPU.
 - **iOS** — iPhone 11 or newer, 4 GB RAM or more.
 - **Android** — Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
 - Models under 1 GB run smoothly on mobile.
 
 ## Models
 
-Any model in the [GGUF format](https://huggingface.co/models?library=gguf&sort=trending) works —
-thousands of them. Pass `hf://owner/repo/file.gguf` anywhere a model path is expected and it is
-downloaded and cached on first use, or pass `"auto"` to fit one to available memory.
+Any model in the [GGUF format](https://huggingface.co/models?library=gguf&sort=trending) works. Pass a `hf:owner/repo/file.gguf` reference, an HTTPS URL, or a local path anywhere a model path is expected; remote models are downloaded and cached on first use. Pass `"auto"` to fit one to available memory.
 
 Start with [Qwen3 0.6B](https://huggingface.co/NobodyWho/Qwen_Qwen3-0.6B-GGUF): at ~330 MB it is
-small enough for a phone and good enough to tell whether the integration works. Size up from the
-[NobodyWho org](https://huggingface.co/NobodyWho) or the
-[model selection page](https://www.nobodywho.ai/models/).
+small enough for any phone and good enough to tell whether the integration works.
 
 ---
 
-## Install
+## Quick Start
 
 <details>
 <summary><b>Kotlin</b></summary>
