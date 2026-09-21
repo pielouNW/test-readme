@@ -290,8 +290,7 @@ Setup :
 uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M --name qwen
 ```
 
-It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.
-The server is experimental, see the [server docs](https://docs.nobodywho.ooo/docs/server) for more info.
+It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`. See the [docs](https://docs.nobodywho.ooo/docs/server) for more info.
 
 ---
 
