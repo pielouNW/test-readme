@@ -235,7 +235,9 @@ You can also grab a specific version from the [releases page](https://github.com
                        nobodywho-core (Rust)
         chat · templates · grammars · sampling · context shifting
                                 │
-                llama.cpp  ·  Vulkan / Metal / CPU
+                            llama.cpp
+                                │
+                        Vulkan / Metal / CPU
 ```
 
 One Rust core does the work; each binding is a thin, idiomatic surface over it. That is why a
