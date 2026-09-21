@@ -229,13 +229,13 @@ You can also grab a specific version from the [releases page](https://github.com
 
 ```mermaid
 flowchart TD
-    K["Kotlin"]:::lang
-    S["Swift"]:::lang
-    RN["React Native"]:::lang
     FL["Flutter"]:::lang
     PY["Python"]:::lang
     GO["Godot"]:::lang
-
+    K["Kotlin"]:::lang
+    S["Swift"]:::lang
+    RN["React Native"]:::lang
+    
     U["UniFFI"]:::glue
     FRB["flutter_rust_bridge"]:::glue
     P3["PyO3"]:::glue
