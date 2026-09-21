@@ -159,7 +159,7 @@ const msg = await chat.ask("What is the capital of Denmark?").completed();
 console.log(msg); // The capital of Denmark is Copenhagen.
 ```
 
-[RN / Expo documentation](https://docs.nobodywho.ooo/react-native/) · [npm](https://www.npmjs.com/package/react-native-nobodywho) · [RN starter app](https://github.com/nobodywho-ooo/react-native-starter-example) · [Expo starter app](https://github.com/nobodywho-ooo/expo-starter-example)
+[RN / Expo documentation](https://docs.nobodywho.ooo/react-native/) · [NPM](https://www.npmjs.com/package/react-native-nobodywho) · [RN starter app](https://github.com/nobodywho-ooo/react-native-starter-example) · [Expo starter app](https://github.com/nobodywho-ooo/expo-starter-example)
 
 </details>
 
