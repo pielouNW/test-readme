@@ -227,17 +227,45 @@ You can also grab a specific version from the [releases page](https://github.com
 
 ## Under the hood
 
-```text
-  Kotlin    Swift    React Native    Flutter    Python    Godot
-    └─────────┴────────────┴────┬──────┴──────────┴─────────┘
-           UniFFI  ·  flutter_rust_bridge  ·  PyO3  ·  gdext
-                                │
-                       nobodywho-core (Rust)
-        chat · templates · grammars · sampling · context shifting
-                                │
-                            llama.cpp
-                                │
-                        Vulkan / Metal / CPU
+```mermaid
+flowchart TD
+    K["Kotlin"]:::lang
+    S["Swift"]:::lang
+    RN["React Native"]:::lang
+    FL["Flutter"]:::lang
+    PY["Python"]:::lang
+    GO["Godot"]:::lang
+
+    U["UniFFI"]:::glue
+    FRB["flutter_rust_bridge"]:::glue
+    P3["PyO3"]:::glue
+    GX["gdext"]:::glue
+
+    K --> U
+    S --> U
+    RN --> U
+    FL --> FRB
+    PY --> P3
+    GO --> GX
+
+    CORE["nobodywho core · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
+
+    U --> CORE
+    FRB --> CORE
+    P3 --> CORE
+    GX --> CORE
+
+    CORE --> LCPP["llama.cpp<br/>text · vision · embeddings · reranking"]:::engine
+    CORE --> ORT["ONNX Runtime<br/>speech-to-text · text-to-speech · VAD"]:::engine
+
+    LCPP --> HW1["Vulkan · Metal · CPU"]:::hw
+    ORT --> HW2["CUDA · CPU"]:::hw
+
+    classDef lang fill:#e8eefc,stroke:#5b7bd5,color:#11204a
+    classDef glue fill:#f3f0fb,stroke:#8b7bd5,color:#2a1f4a
+    classDef core fill:#fdf0e3,stroke:#d58f3b,color:#4a2d0b
+    classDef engine fill:#eaf6ee,stroke:#4fa46a,color:#0f3b1f
+    classDef hw fill:#f2f2f2,stroke:#999,color:#222
 ```
 
 One Rust core does the work; each binding is a thin, idiomatic surface over it. That is why a
