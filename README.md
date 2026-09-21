@@ -133,7 +133,7 @@ let response = try await chat.ask("What is the capital of Denmark?").completed()
 print(response) // The capital of Denmark is Copenhagen.
 ```
 
-[Swift documentation](https://docs.nobodywho.ooo/swift/) · [GitHub](https://github.com/nobodywho-ooo/nobodywho-swift)
+[Swift documentation](https://docs.nobodywho.ooo/swift/) · [GitHub](https://github.com/nobodywho-ooo/nobodywho-swift) · [starter app](https://github.com/nobodywho-ooo/swift-starter-example)
 
 </details>
 
