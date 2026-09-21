@@ -1,10 +1,12 @@
-[![Stars](https://img.shields.io/github/stars/nobodywho-ooo/nobodywho?style=flat-square&logo=github&label=Star)](https://github.com/nobodywho-ooo/nobodywho/stargazers)
-[![Licence](https://img.shields.io/badge/licence-EUPL--1.2-blue?style=flat-square)](LICENSE)
-[![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
+[![Discord](https://img.shields.io/discord/1308812521456799765?logo=discord&style=flat-square)](https://discord.gg/qhaMc2qCYB)
+[![Matrix](https://img.shields.io/badge/Matrix-000?logo=matrix&logoColor=fff)](https://matrix.to/#/#nobodywho:matrix.org)
+[![Mastodon](https://img.shields.io/badge/Mastodon-6364FF?logo=mastodon&logoColor=fff&style=flat-square)](https://mastodon.gamedev.place/@nobodywho)
 [![Pub.dev Version](https://img.shields.io/pub/v/nobodywho?include_prereleases&style=flat-square&label=pub.dev)](https://pub.dev/packages/nobodywho)
 [![PyPI Version](https://img.shields.io/pypi/v/nobodywho?style=flat-square&labelColor=%233775A9&color=%23FFD242)](https://pypi.org/project/nobodywho/)
 [![npm Version](https://img.shields.io/npm/v/react-native-nobodywho?style=flat-square&logo=npm&label=npm)](https://www.npmjs.com/package/react-native-nobodywho)
-[![Maven Central](https://img.shields.io/maven-central/v/ai.nobodywho/nobodywho?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/artifact/ai.nobodywho/nobodywho)
+[![Godot Engine](https://img.shields.io/badge/Godot-%23FFFFFF.svg?logo=godot-engine&style=flat-square)](https://godotengine.org/asset-library/asset/2886)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=flat-square)](CODE_OF_CONDUCT.md)
+[![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
 
 <h1 align="center">NobodyWho</h1>
 
@@ -37,28 +39,6 @@ You can test our inference engine with on [iOS](https://apps.apple.com/us/app/no
 
 ---
 
-## See it running
-
-NobodyWho ships an OpenAI-compatible server, so you can point any client you already
-have at a local model without writing a line of code:
-
-```bash
-uvx \
-  --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' \
-  nobodywho-server \
-  --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf \
-  --name qwen
-```
-
-It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.
-Set your client's base URL to `http://127.0.0.1:8888/v1` and the model to `qwen`.
-
-The server is experimental, see the [server docs](https://docs.nobodywho.ooo/docs/server) for more info.
-
-⭐ Useful to you? Star the repo, it's the easiest way to say thanks.
-
----
-
 ## Platforms
 
 | Binding | Install | Runs on | Documentation |
@@ -74,6 +54,8 @@ Desktop means Linux, macOS and Windows throughout. Two gaps worth knowing before
 
 - **Godot has no iOS export.** Use the Flutter, React Native or Swift binding on iOS.
 - **There is no web export.** It is tracked in [issue #111](https://github.com/nobodywho-ooo/nobodywho/issues/111).
+
+⭐ Useful to you? Star the repo, it's the easiest way to say thanks.
 
 ## Requirements
 
@@ -259,13 +241,35 @@ You can also grab a specific version from the [releases page](https://github.com
 One Rust core does the work; each binding is a thin, idiomatic surface over it. That is why a
 feature lands everywhere at once, and why behaviour doesn't drift between platforms.
 
+---
+
+## Local Server
+
+NobodyWho provides an experimental local server that implements the OpenAI Chat Completions API.
+
+Setup :
+
+```bash
+uvx \
+  --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' \
+  nobodywho-server \
+  --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf \
+  --name qwen
+```
+
+It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.
+The server is experimental, see the [server docs](https://docs.nobodywho.ooo/docs/server) for more info.
+
+---
+
 ## Documentation
 
 The documentation has everything you might want to know: https://docs.nobodywho.ooo/
 
 Working with a coding agent? Point it at [llms.txt](https://docs.nobodywho.ooo/llms.txt) or
-[llms-full.txt](https://docs.nobodywho.ooo/llms-full.txt), or drop our
-[agent skill](.agents/skills/nobodywho/SKILL.md) into its skills directory.
+[llms-full.txt](https://docs.nobodywho.ooo/llms-full.txt), or install the NobodyWho skill so your agent can look up the current APIs and documentation:
+
+`npx skills add https://github.com/nobodywho-ooo/nobodywho --skill nobodywho`
 
 ## Community
 
@@ -276,7 +280,7 @@ Working with a coding agent? Point it at [llms.txt](https://docs.nobodywho.ooo/l
 
 ⭐ **Star the repo** if NobodyWho is useful to you. It is how people find us.
 
-## Licence
+## License
 
 NobodyWho is licensed under the [EUPL-1.2](LICENSE). **You may use it in proprietary and commercial
 projects, free of charge.** There has been some confusion about this, so to be precise:
