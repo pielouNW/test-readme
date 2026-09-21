@@ -64,17 +64,22 @@ Inference uses Vulkan or Metal where available and CPU where not. The real const
 
 ### Desktop
 
-- **Hardware** — any 64-bit Linux, macOS or Windows (x86_64) machine. 8 GB RAM is a comfortable floor for
-  models up to ~2 GB. macOS accelerates through Metal out of the box, Linux and Windows need a GPU driver with Vulkan support and fall back to CPU without one.
+- **Hardware** — any 64-bit Linux, macOS or Windows machine. Windows is x86_64 only, there are no
+  ARM64 Windows builds. macOS accelerates through Metal out of the box, Linux and Windows need a
+  GPU driver with Vulkan support and fall back to CPU without one.
+- **Memory** — roughly 1.5× the model file in free RAM, or 2× on a machine that's already busy.
+  8 GB is a comfortable floor for models up to ~2 GB; 16 GB or more above that.
 - **Discrete GPUs** — NobodyWho offloads as many layers as fit in free VRAM and runs the rest on
-  the CPU, so a model larger than your VRAM still works, just slower. If barely any of it fits,
-  it skips the GPU and stays on CPU.
+  the CPU, so a model larger than your VRAM still works, just slower. If barely any of it fits, it
+  skips the GPU and stays on CPU. It uses one GPU, the card with the most free memory.
 
 ### Mobile
 
 - **iOS** — iPhone 11 or newer, 4 GB RAM or more.
 - **Android** — Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
-- **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM. iOS reserves around 2 GB, Android 2 to 4 GB depending on vendor. Models around 1 GB run smoothly on any mobile.
+- **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM. iOS
+  reserves around 2 GB, Android 2 to 4 GB depending on vendor. Models under 1 GB run smoothly on
+  any mobile.
 
 ## Models
 
