@@ -50,29 +50,31 @@ You can test our inference engine on [iOS](https://apps.apple.com/us/app/nobodyw
 | **Python** | [PyPI](#quick-start) | Desktop | [docs.nobodywho.ooo/python](https://docs.nobodywho.ooo/python/) |
 | **Godot** | [AssetLib](#quick-start) | Desktop, Android | [docs.nobodywho.ooo/godot](https://docs.nobodywho.ooo/godot/) |
 
-Desktop means Linux, macOS and Windows throughout. Two gaps worth knowing before you start:
+Desktop means Linux, macOS and Windows throughout. Three gaps worth knowing before you start:
 
 - **Godot has no iOS export.** Use the Flutter, React Native or Swift binding on iOS.
+- **Windows ARM64** is not supported yet.
 - **There is no web export.** It is tracked in [issue #111](https://github.com/nobodywho-ooo/nobodywho/issues/111).
 
 ⭐ Useful to you? Star the repo, it's the easiest way to say thanks.
 
 ## Requirements
 
-Inference uses Vulkan or Metal where available and CPU where not. The real constraint is memory:
+Inference uses Vulkan or Metal where available and CPU where not. The real constraint is memory.
 
-- **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM, which
-  is well below total RAM. iOS reserves around 2 GB, Android 2 to 4 GB depending on vendor.
-- **Desktop** — any 64-bit Linux, macOS or Windows machine. 8 GB RAM is a comfortable floor for
-  models up to ~2 GB; 16 GB or more above that. macOS accelerates through Metal out of the box,
-  on Apple Silicon and Intel. Linux and Windows need a GPU driver with Vulkan support and
-  fall back to CPU without one.
+### Desktop
+
+- **Hardware** — any 64-bit Linux, macOS or Windows (x86_64) machine. 8 GB RAM is a comfortable floor for
+  models up to ~2 GB. macOS accelerates through Metal out of the box, Linux and Windows need a GPU driver with Vulkan support and fall back to CPU without one.
 - **Discrete GPUs** — NobodyWho offloads as many layers as fit in free VRAM and runs the rest on
   the CPU, so a model larger than your VRAM still works, just slower. If barely any of it fits,
   it skips the GPU and stays on CPU.
+
+### Mobile
+
 - **iOS** — iPhone 11 or newer, 4 GB RAM or more.
 - **Android** — Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
-- Models under 1 GB run smoothly on any mobile.
+- **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM. iOS reserves around 2 GB, Android 2 to 4 GB depending on vendor. Models around 1 GB run smoothly on any mobile.
 
 ## Models
 
