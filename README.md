@@ -235,19 +235,19 @@ flowchart TD
     K["Kotlin"]:::lang
     S["Swift"]:::lang
     RN["React Native"]:::lang
-    
-    U["UniFFI"]:::glue
+
     FRB["flutter_rust_bridge"]:::glue
     P3["PyO3"]:::glue
     GX["gdext"]:::glue
+    U["UniFFI"]:::glue
 
-    K --> U
-    S --> U
-    RN --> U
     FL --> FRB
     PY --> P3
     GO --> GX
-
+    K --> U
+    S --> U
+    RN --> U
+    
     CORE["nobodywho core · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
 
     U --> CORE
