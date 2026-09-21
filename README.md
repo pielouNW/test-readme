@@ -43,12 +43,12 @@ You can test our inference engine with on [iOS](https://apps.apple.com/us/app/no
 
 | Binding | Install | Runs on | Documentation |
 |---------|---------|---------|---------------|
-| **Kotlin** | [Maven Central](#Quick-Start) | Desktop, Android | [docs.nobodywho.ooo/kotlin](https://docs.nobodywho.ooo/kotlin/) |
-| **Swift** | [SPM](#Quick-Start) | Desktop, iOS, visionOS, watchOS | [docs.nobodywho.ooo/swift](https://docs.nobodywho.ooo/swift/) |
-| **React Native / Expo** | [npm](#Quick-Start) | Desktop, Android, iOS | [docs.nobodywho.ooo/react-native](https://docs.nobodywho.ooo/react-native/) |
-| **Flutter** | [pub.dev](#Quick-Start) | Desktop, Android, iOS | [docs.nobodywho.ooo/flutter](https://docs.nobodywho.ooo/flutter/) |
-| **Python** | [PyPI](#Quick-Start) | Desktop | [docs.nobodywho.ooo/python](https://docs.nobodywho.ooo/python/) |
-| **Godot** | [AssetLib](#Quick-Start) | Desktop, Android | [docs.nobodywho.ooo/godot](https://docs.nobodywho.ooo/godot/) |
+| **Kotlin** | [Maven Central](#quick-start) | Desktop, Android | [docs.nobodywho.ooo/kotlin](https://docs.nobodywho.ooo/kotlin/) |
+| **Swift** | [SPM](#quick-start) | Desktop, iOS, visionOS, watchOS | [docs.nobodywho.ooo/swift](https://docs.nobodywho.ooo/swift/) |
+| **React Native / Expo** | [npm](#quick-start) | Desktop, Android, iOS | [docs.nobodywho.ooo/react-native](https://docs.nobodywho.ooo/react-native/) |
+| **Flutter** | [pub.dev](#quick-start) | Desktop, Android, iOS | [docs.nobodywho.ooo/flutter](https://docs.nobodywho.ooo/flutter/) |
+| **Python** | [PyPI](#quick-start) | Desktop | [docs.nobodywho.ooo/python](https://docs.nobodywho.ooo/python/) |
+| **Godot** | [AssetLib](#quick-start) | Desktop, Android | [docs.nobodywho.ooo/godot](https://docs.nobodywho.ooo/godot/) |
 
 Desktop means Linux, macOS and Windows throughout. Two gaps worth knowing before you start:
 
