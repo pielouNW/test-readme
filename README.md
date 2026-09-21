@@ -247,13 +247,13 @@ flowchart TD
     K --> U
     S --> U
     RN --> U
-    
+
     CORE["nobodywho core · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
 
-    U --> CORE
     FRB --> CORE
     P3 --> CORE
     GX --> CORE
+    U --> CORE
 
     CORE --> LCPP["llama.cpp<br/>text · vision · embeddings · reranking"]:::engine
     CORE --> ORT["ONNX Runtime<br/>speech-to-text · text-to-speech · VAD"]:::engine
