@@ -76,7 +76,7 @@ Inference uses Vulkan or Metal where available and CPU where not. The real const
 
 ## Models
 
-Any model in the [GGUF format](https://huggingface.co/models?library=gguf&sort=trending) works. Pass a `hf:owner/repo/file.gguf` reference, an HTTPS URL, or a local path anywhere a model path is expected; remote models are downloaded and cached on first use. Pass `"auto"` to fit one to available memory.
+Any model in the [GGUF format](https://huggingface.co/models?library=gguf&sort=trending) works. Pass a `hf:owner/repo:QUANT` reference, an HTTPS URL, or a local path anywhere a model path is expected; remote models are downloaded and cached on first use. Pass `"auto"` to fit one to available memory.
 
 Start with [Qwen3 0.6B](https://huggingface.co/NobodyWho/Qwen_Qwen3-0.6B-GGUF): at ~330 MB it is
 small enough for any phone and good enough to tell whether the integration works.
@@ -102,7 +102,7 @@ Use the version from the [Maven Central badge](https://central.sonatype.com/arti
 import ai.nobodywho.Chat
 
 val chat = Chat.fromPath(
-    modelPath = "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf"
+    modelPath = "hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M"
 )
 
 val response = chat.ask("What is the capital of Denmark?").completed()
@@ -126,7 +126,7 @@ https://github.com/nobodywho-ooo/nobodywho-swift.git
 import NobodyWho
 
 let chat = try await Chat.fromPath(
-    modelPath: "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf"
+    modelPath: "hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M"
 )
 
 let response = try await chat.ask("What is the capital of Denmark?").completed()
@@ -152,7 +152,7 @@ npx expo install react-native-nobodywho
 import { Chat } from "react-native-nobodywho";
 
 const chat = await Chat.fromPath({
-  modelPath: "hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf",
+  modelPath: "hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M",
 });
 
 const msg = await chat.ask("What is the capital of Denmark?").completed();
@@ -177,7 +177,7 @@ void main() async {
   await nobodywho.NobodyWho.init();
 
   final chat = await nobodywho.Chat.fromPath(
-    modelPath: 'hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf',
+    modelPath: 'hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M',
   );
 
   final msg = await chat.ask('What is the capital of Denmark?').completed();
@@ -199,7 +199,7 @@ pip install nobodywho
 ```python
 from nobodywho import Chat
 
-chat = Chat('hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf')
+chat = Chat('hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M')
 response = chat.ask('Is water wet?')
 print(response.completed()) // The capital of Denmark is Copenhagen.
 ```
@@ -280,7 +280,7 @@ NobodyWho provides an experimental local server that implements the OpenAI Chat 
 Setup :
 
 ```bash
-uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf --name qwen
+uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M --name qwen
 ```
 
 It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.

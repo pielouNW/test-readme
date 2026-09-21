@@ -28,7 +28,7 @@ NobodyWho 附带一个兼容 OpenAI 的服务器，你不用写一行代码，�
 
 ```bash
 uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' \
-  nobodywho-server --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf --name qwen
+  nobodywho-server --model hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M --name qwen
 ```
 
 它默认监听 `http://127.0.0.1:8888`，提供 `/v1/models` 与 `/v1/chat/completions`。
@@ -73,7 +73,7 @@ uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobo
 ## 模型
 
 任何 [GGUF 格式](https://huggingface.co/models?library=gguf&sort=trending)的模型都能用，可选的有上千个。
-在任何需要填模型路径的地方传入 `hf://owner/repo/file.gguf`，首次使用时会自动下载并缓存；
+在任何需要填模型路径的地方传入 `hf:owner/repo:QUANT`，首次使用时会自动下载并缓存；
 也可以传 `"auto"`，由 NobodyWho 按可用内存挑一个合适的。
 
 建议从 [Qwen3 0.6B](https://huggingface.co/NobodyWho/Qwen_Qwen3-0.6B-GGUF) 开始：约 330 MB，
