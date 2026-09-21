@@ -35,7 +35,7 @@
 * Compatible with thousands of pre-trained LLMs — use any LLM in the GGUF format
 * Powered by the wonderful [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
-You can test our inference engine with on [iOS](https://apps.apple.com/us/app/nobodywho-chat/id6781001350), [Android](https://play.google.com/store/apps/details?id=ai.nobodywho.mobile), [Vision Pro](https://example.com/nobodywho-eyes) and [Apple Watch](https://example.com/nobodywho-wrist).
+You can test our inference engine on [iOS](https://apps.apple.com/us/app/nobodywho-chat/id6781001350), [Android](https://play.google.com/store/apps/details?id=ai.nobodywho.mobile), [Vision Pro](https://example.com/nobodywho-eyes) and [Apple Watch](https://example.com/nobodywho-wrist).
 
 ---
 
