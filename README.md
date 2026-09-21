@@ -280,11 +280,7 @@ NobodyWho provides an experimental local server that implements the OpenAI Chat 
 Setup :
 
 ```bash
-uvx \
-  --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' \
-  nobodywho-server \
-  --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf \
-  --name qwen
+uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf://NobodyWho/Qwen_Qwen3-0.6B-GGUF/Qwen_Qwen3-0.6B-Q4_K_M.gguf --name qwen
 ```
 
 It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`.
