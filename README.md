@@ -284,7 +284,7 @@ feature lands everywhere at once, and why behaviour doesn't drift between platfo
 
 NobodyWho provides an experimental local server that implements the OpenAI Chat Completions API.
 
-Setup :
+Start the server :
 
 ```bash
 uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M --name qwen
