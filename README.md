@@ -70,7 +70,7 @@ flowchart TD
     classDef glue fill:#f3f0fb,stroke:#8b7bd5,color:#2a1f4a
     classDef core fill:#eaf6ee,stroke:#4fa46a,color:#0f3b1f
     classDef engine fill:#fdf0e3,stroke:#d58f3b,color:#4a2d0b
-    classDef hw fill:#fdf0e3,stroke:#d58f3b,color:#4a2d0b
+    classDef hw fill:#f0eeea,stroke:#a09a90,color:#3a352e
 ```
 
 * GPU-accelerated inference via Vulkan or Metal — runs fast on any OS
