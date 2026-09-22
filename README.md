@@ -230,6 +230,21 @@ You can also grab a specific version from the [releases page](https://github.com
 
 </details>
 
+<details>
+<summary><b>Local Server</b></summary>
+
+NobodyWho provides an experimental local server that implements the OpenAI Chat Completions API.
+
+Start the server :
+
+```bash
+uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M --name qwen
+```
+
+It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`. 
+See the [docs](https://docs.nobodywho.ooo/docs/server) for more info.
+</details>
+
 ---
 
 ## Under the hood
@@ -277,21 +292,6 @@ flowchart TD
 
 One Rust core does the work; each binding is a thin, idiomatic surface over it. That is why a
 feature lands everywhere at once, and why behaviour doesn't drift between platforms.
-
----
-
-## Local Server
-
-NobodyWho provides an experimental local server that implements the OpenAI Chat Completions API.
-
-Start the server :
-
-```bash
-uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobodywho/server' nobodywho-server --model hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M --name qwen
-```
-
-It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`. 
-See the [docs](https://docs.nobodywho.ooo/docs/server) for more info.
 
 ---
 
