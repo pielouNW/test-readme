@@ -9,7 +9,7 @@
 [![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
 
 <p align="center">
-  <img src="assets/logo-nobodywho.webp" alt="NobodyWho" width="800">
+  <img src="intro.webp" alt="NobodyWho" width="800">
 </p>
 
 <p align="center">
