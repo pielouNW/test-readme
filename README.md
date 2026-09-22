@@ -9,7 +9,7 @@
 [![Docs](https://img.shields.io/badge/Docs-lightblue?style=flat-square)](https://docs.nobodywho.ooo)
 
 <p align="center">
-  <img src="intro.webp" alt="NobodyWho" width="800">
+  <img src="assets/intro.webp" alt="NobodyWho" width="800">
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@
 
 * **Run locally, offline** — no API keys needed or hidden fees
 * **Run any chat LLM** — Gemma, Qwen, Mistral and more
-* **Fast, type-safe tool calling** — automatically generates structured grammars from your function signatures
+* **Fast, type-safe tool calling** — automatically generates structured grammars from your function signatures, no schema writing needed
 * **Multimodal input** — provide image and audio information to your LLM
 * **Text-to-speech** — synthesize local WAV audio with Kokoro, Pocket TTS and Supertonic backends
 * **Speech-to-text** — transcribe audio into text with Whisper
@@ -32,12 +32,53 @@
 
 ## ⚡️ Under the Hood
 
+```mermaid
+flowchart TD
+    FL["Flutter"]:::lang
+    PY["Python"]:::lang
+    GO["Godot"]:::lang
+    K["Kotlin"]:::lang
+    S["Swift"]:::lang
+    RN["React Native"]:::lang
+
+    FRB["flutter_rust_bridge"]:::glue
+    P3["PyO3"]:::glue
+    GX["gdext"]:::glue
+    U["UniFFI"]:::glue
+
+    FL --> FRB
+    PY --> P3
+    GO --> GX
+    K --> U
+    S --> U
+    RN --> U
+
+    CORE["nobodywho core · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
+
+    FRB --> CORE
+    P3 --> CORE
+    GX --> CORE
+    U --> CORE
+
+    CORE --> LCPP["llama.cpp<br/>text · vision · embeddings · reranking"]:::engine
+    CORE --> ORT["ONNX Runtime<br/>speech-to-text · text-to-speech · VAD"]:::engine
+
+    LCPP --> HW1["Vulkan · Metal · GPU"]:::hw
+    ORT --> HW2["CUDA · CPU"]:::hw
+
+    classDef lang fill:#e8eefc,stroke:#5b7bd5,color:#11204a
+    classDef glue fill:#f3f0fb,stroke:#8b7bd5,color:#2a1f4a
+    classDef core fill:#fdf0e3,stroke:#d58f3b,color:#4a2d0b
+    classDef engine fill:#eaf6ee,stroke:#4fa46a,color:#0f3b1f
+    classDef hw fill:#f2f2f2,stroke:#999,color:#222
+```
+
 * GPU-accelerated inference via Vulkan or Metal — runs fast on any OS
 * Conversation-aware preemptive context shifting — retain full conversation memory without any message length limits
 * Compatible with thousands of pre-trained LLMs — use any LLM in the GGUF format
 * Powered by the wonderful [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
-You can test our inference engine on [iOS](https://apps.apple.com/us/app/nobodywho-chat/id6781001350), [Android](https://play.google.com/store/apps/details?id=ai.nobodywho.mobile), [Vision Pro](https://example.com/nobodywho-eyes) and [Apple Watch](https://example.com/nobodywho-wrist).
+You can test our inference engine on [iOS](https://apps.apple.com/us/app/nobodywho-chat/id6781001350), [Android](https://play.google.com/store/apps/details?id=ai.nobodywho.mobile), [Vision Pro](https://apps.apple.com/us/app/nobodywho-eyes/id6771770762) and [Apple Watch](https://apps.apple.com/us/app/nobodywho-wrist/id6762020355?platform=watch).
 
 ---
 
@@ -46,7 +87,7 @@ You can test our inference engine on [iOS](https://apps.apple.com/us/app/nobodyw
 | Binding | Install | Runs on | Documentation |
 |---------|---------|---------|---------------|
 | **Kotlin** | [Maven Central](#quick-start) | Desktop, Android | [docs.nobodywho.ooo/kotlin](https://docs.nobodywho.ooo/kotlin/) |
-| **Swift** | [SPM](#quick-start) | Desktop, iOS, visionOS, watchOS | [docs.nobodywho.ooo/swift](https://docs.nobodywho.ooo/swift/) |
+| **Swift** | [SPM](#quick-start) | macOS, iOS, visionOS, watchOS | [docs.nobodywho.ooo/swift](https://docs.nobodywho.ooo/swift/) |
 | **React Native / Expo** | [npm](#quick-start) | Desktop, Android, iOS | [docs.nobodywho.ooo/react-native](https://docs.nobodywho.ooo/react-native/) |
 | **Flutter** | [pub.dev](#quick-start) | Desktop, Android, iOS | [docs.nobodywho.ooo/flutter](https://docs.nobodywho.ooo/flutter/) |
 | **Python** | [PyPI](#quick-start) | Desktop | [docs.nobodywho.ooo/python](https://docs.nobodywho.ooo/python/) |
@@ -62,7 +103,7 @@ Desktop means Linux, macOS and Windows throughout. Three gaps worth knowing befo
 
 ## Requirements
 
-Inference uses Vulkan or Metal where available and CPU where not. The real constraint is memory.
+Inference uses the GPU where available and CPU where not. The real constraint is memory.
 
 ### Desktop
 
@@ -81,7 +122,7 @@ Inference uses Vulkan or Metal where available and CPU where not. The real const
 - **Android** — Snapdragon 855 / Adreno 640 / 6 GB RAM or better.
 - **Rule of thumb** — the device needs roughly twice the model file size in *available* RAM. iOS
   reserves around 2 GB, Android 2 to 4 GB depending on vendor. Models under 1 GB run smoothly on
-  any mobile.
+  any phone.
 
 ## Models
 
@@ -93,6 +134,25 @@ small enough for any phone and good enough to tell whether the integration works
 ---
 
 ## Quick Start
+
+<details open>
+<summary><b>Python</b></summary>
+
+```bash
+pip install nobodywho
+```
+
+```python
+from nobodywho import Chat
+
+chat = Chat('hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M')
+response = chat.ask('Is water wet?')
+print(response.completed()) // The capital of Denmark is Copenhagen.
+```
+
+[Python documentation](https://docs.nobodywho.ooo/python/) · [PyPI](https://pypi.org/project/nobodywho/)
+
+</details>
 
 <details>
 <summary><b>Kotlin</b></summary>
@@ -199,28 +259,9 @@ void main() async {
 </details>
 
 <details>
-<summary><b>Python</b></summary>
-
-```bash
-pip install nobodywho
-```
-
-```python
-from nobodywho import Chat
-
-chat = Chat('hf:NobodyWho/Qwen_Qwen3-0.6B-GGUF:Q4_K_M')
-response = chat.ask('Is water wet?')
-print(response.completed()) // The capital of Denmark is Copenhagen.
-```
-
-[Python documentation](https://docs.nobodywho.ooo/python/) · [PyPI](https://pypi.org/project/nobodywho/)
-
-</details>
-
-<details>
 <summary><b>Godot</b></summary>
 
-There is no terminal command for Godot — install it from inside the editor:
+Install NobodyWho from inside the editor:
 
 1. In Godot 4.5+, open the **AssetLib** tab and search for **NobodyWho**.
 2. Download and import it, making sure **Ignore asset root** is ticked in the import dialogue.
@@ -246,54 +287,6 @@ uvx --from 'git+https://github.com/nobodywho-ooo/nobodywho.git#subdirectory=nobo
 It listens on `http://127.0.0.1:8888` and serves `/v1/models` and `/v1/chat/completions`. 
 See the [docs](https://docs.nobodywho.ooo/docs/server) for more info.
 </details>
-
----
-
-## Under the hood
-
-```mermaid
-flowchart TD
-    FL["Flutter"]:::lang
-    PY["Python"]:::lang
-    GO["Godot"]:::lang
-    K["Kotlin"]:::lang
-    S["Swift"]:::lang
-    RN["React Native"]:::lang
-
-    FRB["flutter_rust_bridge"]:::glue
-    P3["PyO3"]:::glue
-    GX["gdext"]:::glue
-    U["UniFFI"]:::glue
-
-    FL --> FRB
-    PY --> P3
-    GO --> GX
-    K --> U
-    S --> U
-    RN --> U
-
-    CORE["nobodywho core · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
-
-    FRB --> CORE
-    P3 --> CORE
-    GX --> CORE
-    U --> CORE
-
-    CORE --> LCPP["llama.cpp<br/>text · vision · embeddings · reranking"]:::engine
-    CORE --> ORT["ONNX Runtime<br/>speech-to-text · text-to-speech · VAD"]:::engine
-
-    LCPP --> HW1["Vulkan · Metal · CPU"]:::hw
-    ORT --> HW2["CUDA · CPU"]:::hw
-
-    classDef lang fill:#e8eefc,stroke:#5b7bd5,color:#11204a
-    classDef glue fill:#f3f0fb,stroke:#8b7bd5,color:#2a1f4a
-    classDef core fill:#fdf0e3,stroke:#d58f3b,color:#4a2d0b
-    classDef engine fill:#eaf6ee,stroke:#4fa46a,color:#0f3b1f
-    classDef hw fill:#f2f2f2,stroke:#999,color:#222
-```
-
-One Rust core does the work; each binding is a thin, idiomatic surface over it. That is why a
-feature lands everywhere at once, and why behaviour doesn't drift between platforms.
 
 ---
 
@@ -323,4 +316,5 @@ projects, free of charge.** There has been some confusion about this, so to be p
 > Linking two programs or linking an existing software with your own work does not – at least under European law – produce a derivative or extend the coverage of the linked software licence to your own work. [[1]](https://interoperable-europe.ec.europa.eu/collection/eupl/licence-compatibility-permissivity-reciprocity-and-interoperability)
 
 If you distribute modified versions of the code *in this repo*, you must open source those changes.
-Make proprietary projects using NobodyWho; just don't make a proprietary fork of NobodyWho.
+
+Feel free to make proprietary projects using NobodyWho, but don't make a proprietary fork of NobodyWho.
