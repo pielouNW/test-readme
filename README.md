@@ -53,7 +53,7 @@ flowchart TD
     S --> U
     RN --> U
 
-    CORE["nobodywho core · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
+    CORE["NobodyWho · Rust<br/>chat · templates · grammars · sampling · context shifting"]:::core
 
     FRB --> CORE
     P3 --> CORE
